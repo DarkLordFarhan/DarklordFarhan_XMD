@@ -76,7 +76,7 @@ function setupConsoleFilters() {
 setupConsoleFilters();
 
 const createContext = async (userJid, options = {}) => {
-    const botName = (await getSetting("BOT_NAME")) || "𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃";
+    const botName = (await getSetting("BOT_NAME")) || "DARKLORD";
     const botPic =
         (await getSetting("BOT_PIC")) ||
         "https://gitcdn.giftedtech.co.ke/image/AZO_image.jpg";
@@ -114,7 +114,7 @@ const createContext = async (userJid, options = {}) => {
 };
 
 const createContext2 = async (userJid, options = {}) => {
-    const botName = (await getSetting("BOT_NAME")) || "𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃";
+    const botName = (await getSetting("BOT_NAME")) || "DARKLORD";
     const botPic =
         (await getSetting("BOT_PIC")) ||
         "https://gitcdn.giftedtech.co.ke/image/AZO_image.jpg";
@@ -133,7 +133,7 @@ const createContext2 = async (userJid, options = {}) => {
             },
             externalAdReply: {
                 title: options.title || botName,
-                body: options.body || "Powered by Gifted Tech",
+                body: options.body || "Powered by DARKLORD",
                 thumbnailUrl: botPic,
                 mediaType: 1,
                 showAdAttribution: true,
