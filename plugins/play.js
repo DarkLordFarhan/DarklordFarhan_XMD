@@ -1,4 +1,4 @@
-const { gmd, toPtt } = require("../gift");
+const { gmd, toPtt } = require("../darklord");
 const yts = require("yt-search");
 const axios = require("axios");
 

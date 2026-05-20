@@ -1,4 +1,4 @@
-const { gmd, commands, getSetting } = require("../gift");
+const { gmd, commands, getSetting } = require("../darklord");
 const fs = require("fs").promises;
 const fsA = require("node:fs");
 const { S_WHATSAPP_NET } = require("gifted-baileys");
@@ -9,7 +9,7 @@ const {
   groupCache,
   getGroupMetadata,
   cachedGroupMetadata,
-} = require("../gift/connection/groupCache");
+} = require("../darklord/connection/groupCache");
 
 const { exec: _shellExec } = require("child_process");
 
@@ -61,8 +61,8 @@ gmd(
 
     await react("⏳");
     try {
-      const gift = require("../gift");
-      const _rawDb = require("../gift/database/database").DATABASE;
+      const gift = require("../darklord");
+      const _rawDb = require("../darklord/database/database").DATABASE;
       const settings = await gift.getAllSettings();
       const { getSetting, setSetting, getAllSettings, commands } = gift;
       const prefix = settings.PREFIX;

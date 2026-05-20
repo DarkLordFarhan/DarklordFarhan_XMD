@@ -1,18 +1,18 @@
-const { gmd } = require("../gift/gmdCmds");
-const { getSetting, setSetting } = require("../gift/database/settings");
+const { gmd } = require("../darklord/gmdCmds");
+const { getSetting, setSetting } = require("../darklord/database/settings");
 const {
   getGroupSetting,
   setGroupSetting,
   resetAllGroupSettings,
   getAllGroupSettings,
-} = require("../gift/database/groupSettings");
-const { clearAllSudo, getSudoNumbers } = require("../gift/database/sudo");
+} = require("../darklord/database/groupSettings");
+const { clearAllSudo, getSudoNumbers } = require("../darklord/database/sudo");
 const {
   getAllUsersNotes,
   deleteNoteById,
   updateNoteById,
   deleteAllNotes,
-} = require("../gift/database/notes");
+} = require("../darklord/database/notes");
 
 function parseBooleanInput(input) {
   if (!input) return null;
@@ -757,7 +757,7 @@ gmd(
       const {
         getBadWords,
         DEFAULT_BAD_WORDS,
-      } = require("../gift/database/groupSettings");
+      } = require("../darklord/database/groupSettings");
       const settings = await getAllGroupSettings(from);
 
       const welcomeStatus = isSettingEnabled(settings.WELCOME_MESSAGE)
@@ -924,7 +924,7 @@ gmd(
       const {
         GroupSettingsDB,
         AntilinkWarningsDB,
-      } = require("../gift/database/groupSettings");
+      } = require("../darklord/database/groupSettings");
       await GroupSettingsDB.destroy({ where: {} });
       await AntilinkWarningsDB.destroy({ where: {} });
       await react("✅");

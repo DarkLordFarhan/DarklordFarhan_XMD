@@ -1,4 +1,4 @@
-const { gmd, gmdBuffer } = require("../gift");
+const { gmd, gmdBuffer } = require("../darklord");
 const axios = require("axios");
 
 const logoEndpoints = [

@@ -1,4 +1,4 @@
-const { gmd } = require("../gift");
+const { gmd } = require("../darklord");
 const axios = require("axios");
 
 async function queryAI(endpoint, query, conText) {

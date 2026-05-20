@@ -1,4 +1,4 @@
-const { gmd } = require("../gift");
+const { gmd } = require("../darklord");
 const axios = require("axios");
 const { sendButtons } = require("gifted-btns");
 

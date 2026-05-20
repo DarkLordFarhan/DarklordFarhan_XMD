@@ -1,8 +1,8 @@
-const { gmd } = require("../gift");
+const { gmd } = require("../darklord");
 const {
     getLidMapping,
     getGroupMetadata,
-} = require("../gift/connection/groupCache");
+} = require("../darklord/connection/groupCache");
 
 function getUserName(jid) {
     return jid.split("@")[0];

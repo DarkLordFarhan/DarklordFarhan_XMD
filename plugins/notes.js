@@ -1,4 +1,4 @@
-const { gmd } = require("../gift");
+const { gmd } = require("../darklord");
 const {
     initNotesDB,
     addNote,
@@ -7,8 +7,8 @@ const {
     updateNote,
     deleteNote,
     deleteAllNotes,
-} = require("../gift/database/notes");
-const { getContextInfo } = require("../gift/contextInfo");
+} = require("../darklord/database/notes");
+const { getContextInfo } = require("../darklord/contextInfo");
 const { sendButtons } = require("gifted-btns");
 
 const more = String.fromCharCode(8206);

@@ -1,4 +1,4 @@
-const { gmd } = require("../gift");
+const { gmd } = require("../darklord");
 const path = require("path");
 const fs = require('fs').promises;
 const { sendButtons } = require('gifted-btns');

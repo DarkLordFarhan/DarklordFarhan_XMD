@@ -1,26 +1,26 @@
-const { gmd, commands } = require("../gift/gmdCmds");
+const { gmd, commands } = require("../darklord/gmdCmds");
 const {
   getSetting,
   setSetting,
   getAllSettings,
   resetSetting,
   resetAllSettings,
-} = require("../gift/database/settings");
+} = require("../darklord/database/settings");
 const {
   getGroupSetting,
   setGroupSetting,
   getEnabledGroupSettings,
   resetAllGroupSettings,
   getAllGroupSettings,
-} = require("../gift/database/groupSettings");
-const { getSudoNumbers, clearAllSudo } = require("../gift/database/sudo");
+} = require("../darklord/database/groupSettings");
+const { getSudoNumbers, clearAllSudo } = require("../darklord/database/sudo");
 const {
   getAllUsersNotes,
   deleteNoteById,
   updateNoteById,
   deleteAllNotes,
   NotesDB,
-} = require("../gift/database/notes");
+} = require("../darklord/database/notes");
 
 function parseBooleanInput(input) {
   if (!input) return null;
@@ -931,7 +931,7 @@ gmd(
     const value = modeMap[input];
     if (!value) {
       const warnCount = await getGroupSetting(from, "ANTIBAD_WARN_COUNT");
-      const { getBadWords } = require("../gift/database/groupSettings");
+      const { getBadWords } = require("../darklord/database/groupSettings");
       const badWords = await getBadWords(from);
       return reply(`❌ Please specify a mode:
 • *on/delete* - Delete bad word messages
@@ -1029,7 +1029,7 @@ gmd(
       clearBadWords,
       initializeDefaultBadWords,
       DEFAULT_BAD_WORDS,
-    } = require("../gift/database/groupSettings");
+    } = require("../darklord/database/groupSettings");
 
     const action = (args[0] || "").toLowerCase();
     const words = args.slice(1);

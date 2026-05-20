@@ -1,4 +1,4 @@
-const { gmd, commands, monospace, formatBytes } = require("../gift"),
+const { gmd, commands, monospace, formatBytes } = require("../darklord"),
   fs = require("fs"),
   axios = require("axios"),
   BOT_START_TIME = Date.now(),
@@ -200,7 +200,7 @@ gmd(
 > *${botFooter}*`;
 
       const giftedMess = {
-        image: fs.readFileSync(__dirname + "/../gift/botimage.png"),
+        image: fs.readFileSync(__dirname + "/../darklord/botimage.png"),
         caption: menus.trim(),
         contextInfo: {
           mentionedJid: [sender],
@@ -301,7 +301,7 @@ ${readmore}\n`;
       });
 
       const giftedMess = {
-        image: fs.readFileSync(__dirname + "/../gift/botimage.png"),
+        image: fs.readFileSync(__dirname + "/../darklord/botimage.png"),
         caption: list.trim(),
         contextInfo: {
           mentionedJid: [sender],
@@ -431,7 +431,7 @@ ${readmore}\n`;
       }
 
       const giftedMess = {
-        image: fs.readFileSync(__dirname + "/../gift/botimage.png"),
+        image: fs.readFileSync(__dirname + "/../darklord/botimage.png"),
         caption: `${menu.trim()}\n\n> *${botFooter}*`,
         contextInfo: {
           mentionedJid: [sender],
