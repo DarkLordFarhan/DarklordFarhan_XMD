@@ -1,7 +1,7 @@
 {
   "name": "darklord-xmd",
   "version": "5.0.0",
-  "description": "𓅓 𝐃𝐀𝐑𝐊 𝐋𝐎𝐑𝐃𓅣._XMD, a Multi Device Whatsapp Bot to Enhance Whatsapp Communication Experience",
+  "description": "\ud80c\udd53 \ud835\udc03\ud835\udc00\ud835\udc11\ud835\udc0a \ud835\udc0b\ud835\udc0e\ud835\udc11\ud835\udc03\ud80c\udd63._XMD, a Multi Device Whatsapp Bot to Enhance Whatsapp Communication Experience",
   "main": "./index.js",
   "type": "commonjs",
   "scripts": {
@@ -14,8 +14,7 @@
   "keywords": [
     "DarkLordFarhan",
     "darklord-xmd",
-    "whatsapp-bot",
-    "giftedtech"
+    "whatsapp-bot"
   ],
   "author": "DarkLordFarhan",
   "license": "MIT",
