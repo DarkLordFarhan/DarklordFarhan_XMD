@@ -63,7 +63,7 @@ const DEFAULT_SETTINGS = {
     YT: "https://youtube.com/shorts/__clfjY_yfM?si=IdzEUKek8Xhw0vLo",
     NEWSLETTER_JID: "120363403054496228@newsletter",
     GC_JID: "GFCyKZmDSh31tGrvjOMj6A",
-    NEWSLETTER_URL: "https://whatsapp.com/channel/0029Vb7jauLHLHQbkcbcHi0e",
+    NEWSLETTER_URL: "https://whatsapp.com/channel/0029Vb8ANT4J93weNOlcux3g",
     BOT_REPO: "DarkLordFarhan/DarklordFarhan_XMD",
     PACK_NAME: "𝐃𝐀𝐑𝐊 𝐋𝐎𝐑𝐃 𝐗𝐌𝐃",
     PACK_AUTHOR: "𝐃𝐚𝐫𝐤𝐋𝐨𝐫𝐝",

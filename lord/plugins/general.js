@@ -931,3 +931,45 @@ gmd(
     }
   },
 );
+
+
+  gmd(
+    {
+      pattern: "u",
+      aliases: ["channel", "wacha", "wachannel"],
+      react: "📢",
+      category: "general",
+      description: "Get the bot WhatsApp channel link.",
+    },
+    async (from, Gifted, conText) => {
+      const {
+        mek,
+        react,
+        reply,
+        newsletterJid,
+        newsletterUrl,
+        botFooter,
+        botName,
+        botPic,
+      } = conText;
+
+      const msg = `📢 *${botName} Channel*\n\nJoin our official WhatsApp channel to get the latest updates, new features, and announcements!\n\n🔗 ${newsletterUrl}`;
+
+      await sendButtons(Gifted, from, {
+        title: `${botName} Official Channel`,
+        text: msg,
+        footer: `> *${botFooter}*`,
+        buttons: [
+          {
+            name: "cta_url",
+            buttonParamsJson: JSON.stringify({
+              display_text: "📢 Join Channel",
+              url: newsletterUrl,
+            }),
+          },
+        ],
+      });
+      await react("✅");
+    },
+  );
+  
