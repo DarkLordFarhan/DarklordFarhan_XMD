@@ -56,7 +56,7 @@ function getSessionId() {
 
         console.log('⚠️   No SESSION_ID found!\n');
         console.log('📌  Get your session ID from the pairing server.');
-        console.log('    Format: Gifted~XXXXXXXX\n');
+        console.log('    Format: LordFarhan-XMD~XXXXXXXX\n');
 
         let id = '';
         while (!id) {
