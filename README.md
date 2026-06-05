@@ -52,6 +52,8 @@ DARKLORD-XMD/
 
 > Scan the QR code or use a pairing code from your session generator to get your `SESSION_ID`.  
 > Set it as an environment variable / secret before starting.
+>
+> 🔗 **[Click here to get your Pair Code](https://lordfarhan-xmd-production.up.railway.app/pair)**
 
 <img src='https://i.imgur.com/LyHic3i.gif' width="100%"/>
 
