@@ -9,7 +9,8 @@
     "start": "pm2 start index.js --deep-monitoring --attach --name darklord-xmd",
     "stop": "pm2 stop darklord-xmd",
     "restart": "pm2 restart darklord-xmd && pm2 logs",
-    "stash": "git stash && git stash drop"
+    "stash": "git stash && git stash drop",
+    "postinstall": "npm rebuild sharp --platform=linux --arch=x64 || true"
   },
   "keywords": [
     "DarkLordFarhan",
