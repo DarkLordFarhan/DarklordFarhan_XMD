@@ -176,9 +176,9 @@ gmd(
       ).length;
 
       let menus = `
-┏━━━━━━━━━━━━━━━━━━━━━━┓
-┃   𝐃𝐀𝐑𝐊 𝐋𝐎𝐑𝐃 𝐗𝐌𝐃   ┃
-┗━━━━━━━━━━━━━━━━━━━━━━┛
+┌──────────────────────┐
+│   𝐃𝐀𝐑𝐊 𝐋𝐎𝐑𝐃 𝐗𝐌𝐃   │
+└──────────────────────┘
 
 👤 *Uꜱᴇʀ:* ${monospace(pushName)}
 ⏱️ *Uᴘᴛɪᴍᴇ:* ${monospace(uptime)}
@@ -187,15 +187,15 @@ gmd(
 🖥️ *Rᴀᴍ:* ${monospace(ram)}
 📦 *Cᴏᴍᴍᴀɴᴅꜱ:* ${monospace(totalCommands.toString())}
 
-┏━━━━━━━━━━━━━━━━━━━━━━┓
-┃     𝐐𝐔𝐈𝐂𝐊 𝐌𝐄𝐍𝐔      ┃
-┗━━━━━━━━━━━━━━━━━━━━━━┛
-📧 ${monospace(botPrefix + "menu")}  — Full command list
-📧 ${monospace(botPrefix + "list")}  — All commands
-📧 ${monospace(botPrefix + "ping")}  — Bot speed
-📧 ${monospace(botPrefix + "uptime")} — Bot uptime
-📧 ${monospace(botPrefix + "repo")}  — Bot script
-📧 ${monospace(botPrefix + "owner")} — Owner info
+┌──────────────────────┐
+│     𝐐𝐔𝐈𝐂𝐊 𝐌𝐄𝐍𝐔      │
+└──────────────────────┘
+☯️ ${monospace(botPrefix + "menu")}  — Full command list
+☯️ ${monospace(botPrefix + "list")}  — All commands
+☯️ ${monospace(botPrefix + "ping")}  — Bot speed
+☯️ ${monospace(botPrefix + "uptime")} — Bot uptime
+☯️ ${monospace(botPrefix + "repo")}  — Bot script
+☯️ ${monospace(botPrefix + "owner")} — Owner info
 
 > *${botFooter}*`;
 
@@ -279,9 +279,9 @@ gmd(
       ).length;
 
       let list = `
-┏━━━━━━━━━━━━━━━━━━━━━━┓
-┃   𝐃𝐀𝐑𝐊 𝐋𝐎𝐑𝐃 𝐗𝐌𝐃   ┃
-┗━━━━━━━━━━━━━━━━━━━━━━┛
+┌──────────────────────┐
+│   𝐃𝐀𝐑𝐊 𝐋𝐎𝐑𝐃 𝐗𝐌𝐃   │
+└──────────────────────┘
 ⚡ *Mᴏᴅᴇ:* ${monospace(botMode)}
 🔑 *Pʀᴇꜰɪx:* [ ${monospace(botPrefix)} ]
 👤 *Uꜱᴇʀ:* ${monospace(pushName)}
@@ -296,7 +296,7 @@ ${readmore}\n`;
 
       commands.forEach((gmd, index) => {
         if (gmd.pattern && gmd.description) {
-          list += `📧 *${monospace(botPrefix + gmd.pattern)}*\n   ↳ ${gmd.description}\n`;
+          list += `☯️ *${monospace(botPrefix + gmd.pattern)}*\n   ↳ ${gmd.description}\n`;
         }
       });
 
@@ -398,9 +398,9 @@ gmd(
       }
 
       let header = `
-┏━━━━━━━━━━━━━━━━━━━━━━┓
-┃   𝐃𝐀𝐑𝐊 𝐋𝐎𝐑𝐃 𝐗𝐌𝐃   ┃
-┗━━━━━━━━━━━━━━━━━━━━━━┛
+┌──────────────────────┐
+│   𝐃𝐀𝐑𝐊 𝐋𝐎𝐑𝐃 𝐗𝐌𝐃   │
+└──────────────────────┘
 👤 *Sᴜᴍᴍᴏɴᴇᴅ Bʏ:* ${monospace(pushName)}
 ⚡ *Mᴏᴅᴇ:* ${monospace(botMode)}
 🔑 *Pʀᴇꜰɪx:* [ ${monospace(botPrefix)} ]
@@ -414,14 +414,14 @@ gmd(
 ${readmore}\n`;
 
       const formatCategory = (category, gmds) => {
-        const title = `┏━━〔 *${monospace(category.toUpperCase())}* 〕━━┓\n`;
+        const title = `┌──〔 *${monospace(category.toUpperCase())}* 〕──┐\n`;
         const body = gmds
           .map((gmd) => {
             const prefix = gmd.isBody ? "" : botPrefix;
-            return `  📧 ${monospace(prefix + gmd.pattern)}`;
+            return `  ☯️ ${monospace(prefix + gmd.pattern)}`;
           })
           .join("\n");
-        const footer = `\n┗━━━━━━━━━━━━━━━━━━━━━━┛\n`;
+        const footer = `\n└──────────────────────┘\n`;
         return `${title}${body}${footer}\n`;
       };
 
