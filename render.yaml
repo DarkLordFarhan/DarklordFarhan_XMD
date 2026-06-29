@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: darklord-xmd-deploy-site
+    runtime: node
+    rootDir: deploy-site
+    buildCommand: npm install
+    startCommand: npm start
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DarkLord XMD — Deploy</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      background: #0a0a0f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      padding: 20px;
+      background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(120,0,255,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(0,200,255,0.06) 0%, transparent 60%);
+    }
+
+    .card {
+      background: #13131a;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px;
+      padding: 36px 32px 28px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 0 60px rgba(120,0,255,0.12), 0 20px 40px rgba(0,0,0,0.5);
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #7000ff, #00c8ff);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      margin: 0 auto 16px;
+      box-shadow: 0 0 30px rgba(112,0,255,0.4);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.5px;
+    }
+
+    .tagline {
+      text-align: center;
+      font-size: 13px;
+      color: #888;
+      margin-top: 4px;
+      margin-bottom: 20px;
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .social-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 16px;
+      transition: transform 0.2s, opacity 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .social-btn:hover { transform: scale(1.12); opacity: 0.9; }
+    .social-btn.yt  { background: #ff0000; }
+    .social-btn.wa  { background: #25d366; }
+    .social-btn.tg  { background: #229ed9; }
+    .social-btn.gh  { background: #333; }
+
+    .divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 22px;
+    }
+
+    .pair-btn {
+      display: block;
+      width: 100%;
+      padding: 11px;
+      background: rgba(112,0,255,0.15);
+      border: 1px solid rgba(112,0,255,0.35);
+      color: #c084fc;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      text-decoration: none;
+      margin-bottom: 22px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .pair-btn:hover { background: rgba(112,0,255,0.25); border-color: rgba(112,0,255,0.6); }
+
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #aaa;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    label span.req { color: #f87171; margin-left: 2px; }
+    label span.opt { color: #6b7280; font-weight: 400; text-transform: none; margin-left: 4px; font-size: 11px; }
+
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 11px 14px;
+      background: #0e0e16;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      color: #e5e7eb;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      margin-bottom: 6px;
+    }
+    input:focus { border-color: rgba(112,0,255,0.5); }
+    input::placeholder { color: #4b5563; }
+
+    .hint {
+      font-size: 11px;
+      color: #6b7280;
+      margin-bottom: 18px;
+    }
+    .hint a { color: #818cf8; text-decoration: none; }
+    .hint a:hover { text-decoration: underline; }
+
+    .error-msg {
+      font-size: 12px;
+      color: #f87171;
+      margin-bottom: 12px;
+      display: none;
+    }
+
+    .deploy-section {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .deploy-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 13px;
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+      letter-spacing: 0.3px;
+    }
+    .deploy-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .deploy-btn:active { transform: translateY(0); }
+
+    .btn-railway {
+      background: linear-gradient(135deg, #7000ff, #5500cc);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(112,0,255,0.35);
+    }
+
+    .btn-render {
+      background: linear-gradient(135deg, #46e3b7, #00a97f);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(70,227,183,0.25);
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #4b5563;
+      margin-top: 24px;
+    }
+    .footer a { color: #6366f1; text-decoration: none; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(16,185,129,0.12);
+      border: 1px solid rgba(16,185,129,0.3);
+      color: #34d399;
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      margin: 0 auto 20px;
+      display: flex;
+      width: fit-content;
+    }
+    .badge::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #34d399;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="avatar">🤖</div>
+    <h1>DarkLord XMD</h1>
+    <p class="tagline">Deploy your WhatsApp Bot in seconds</p>
+
+    <div class="socials">
+      <a class="social-btn yt" href="https://youtube.com/@DarkLordFarhan" target="_blank" title="YouTube">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+      </a>
+      <a class="social-btn wa" href="https://wa.me/message/DARKLORDFARHAN" target="_blank" title="WhatsApp">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.3.2-.6.1a8 8 0 0 1-2.3-1.4 8.7 8.7 0 0 1-1.6-2c-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.2-.5 0-.2-.7-1.7-1-2.3-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4C8.6 7.9 8 8.5 8 9.8s.9 2.6 1 2.7c.1.2 1.8 2.7 4.3 3.8.6.3 1.1.4 1.4.5.6.2 1.1.2 1.6.1.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2z"/></svg>
+      </a>
+      <a class="social-btn tg" href="https://t.me/DarkLordFarhan" target="_blank" title="Telegram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.9 8.2-2 9.4c-.1.6-.5.8-.9.5l-2.6-1.9-1.2 1.2c-.1.1-.3.2-.6.2l.2-2.7 5-4.5c.2-.2 0-.3-.3-.1L6.7 14.9 4.2 14c-.6-.2-.6-.6.1-.8l11.6-4.5c.5-.2.9.1.9.5z"/></svg>
+      </a>
+      <a class="social-btn gh" href="https://github.com/DarkLordFarhan/DarklordFarhan_XMD" target="_blank" title="GitHub">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.3 1.9 1.3 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.3-3.2-.2-.4-.6-1.6.1-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0C17 5.1 18 5.4 18 5.4c.7 1.6.3 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/></svg>
+      </a>
+    </div>
+
+    <div class="badge">Live &amp; Active</div>
+
+    <hr class="divider"/>
+
+    <a class="pair-btn" href="https://darklordfarhan-xmd.up.railway.app/pair" target="_blank">
+      🔗 Get Session ID (Pair Link)
+    </a>
+
+    <div>
+      <label>Session ID <span class="req">*</span></label>
+      <input type="text" id="sessionId" placeholder="DarkLord~eyJhbGci..." autocomplete="off"/>
+      <div class="hint">Generate yours using the Pair Link above</div>
+    </div>
+
+    <div>
+      <label>Owner Number <span class="opt">(Optional)</span></label>
+      <input type="text" id="ownerNum" placeholder="2348123456789" autocomplete="off"/>
+      <div class="hint">Your WhatsApp number with country code (no +)</div>
+    </div>
+
+    <div id="errMsg" class="error-msg">⚠️ Please enter your Session ID first.</div>
+
+    <div class="deploy-section">
+      <button class="deploy-btn btn-railway" onclick="deployRailway()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8M12 8v8"/></svg>
+        Deploy to Railway
+      </button>
+      <button class="deploy-btn btn-render" onclick="deployRender()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Deploy to Render
+      </button>
+    </div>
+
+    <p class="footer">
+      © 2026 Powered by <a href="https://github.com/DarkLordFarhan/DarklordFarhan_XMD" target="_blank">DarkLord XMD</a>
+    </p>
+  </div>
+
+  <script>
+    function getValues() {
+      const sessionId = document.getElementById('sessionId').value.trim();
+      const ownerNum  = document.getElementById('ownerNum').value.trim();
+      const errMsg    = document.getElementById('errMsg');
+      if (!sessionId) {
+        errMsg.style.display = 'block';
+        return null;
+      }
+      errMsg.style.display = 'none';
+      return { sessionId, ownerNum };
+    }
+
+    function deployRailway() {
+      const v = getValues();
+      if (!v) return;
+      const base = 'https://railway.app/new/template';
+      const params = new URLSearchParams({
+        template: 'https://github.com/DarkLordFarhan/DarklordFarhan_XMD',
+        envs: 'SESSION_ID,OWNER_NUM',
+        SESSION_IDDesc: 'Your WhatsApp Session ID from Pair Link',
+        SESSION_IDDefault: v.sessionId,
+        OWNER_NUMDesc: 'Your WhatsApp number with country code (no +)',
+        OWNER_NUMDefault: v.ownerNum || '',
+        referralCode: 'darklord-xmd',
+      });
+      window.open(`${base}?${params}`, '_blank');
+    }
+
+    function deployRender() {
+      const v = getValues();
+      if (!v) return;
+      const base = 'https://render.com/deploy';
+      const params = new URLSearchParams({
+        repo: 'https://github.com/DarkLordFarhan/DarklordFarhan_XMD',
+      });
+      window.open(`${base}?${params}`, '_blank');
+    }
+  </script>
+</body>
+</html>
